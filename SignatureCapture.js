@@ -22,7 +22,6 @@ class SignatureCapture extends React.Component {
     }
 
     onChange(event) {
-
         if(event.nativeEvent.pathName){
 
             if (!this.props.onSaveEvent) {
@@ -65,6 +64,7 @@ class SignatureCapture extends React.Component {
     componentWillUnmount() {
         this.subscriptions.forEach(sub => sub.remove());
         this.subscriptions = [];
+        this.unsetViewMode();
     }
 
     render() {
@@ -85,6 +85,14 @@ class SignatureCapture extends React.Component {
         UIManager.dispatchViewManagerCommand(
             ReactNative.findNodeHandle(this),
             UIManager.RSSignatureView.Commands.resetImage,
+            [],
+        );
+    }
+
+    unsetViewMode() {
+        UIManager.dispatchViewManagerCommand(
+            ReactNative.findNodeHandle(this),
+            UIManager.RSSignatureView.Commands.unsetViewMode,
             [],
         );
     }

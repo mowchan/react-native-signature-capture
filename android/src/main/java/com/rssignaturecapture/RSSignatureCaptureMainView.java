@@ -71,6 +71,10 @@ public class RSSignatureCaptureMainView extends LinearLayout implements OnClickL
     }
   }
 
+  public void unsetViewMode() {
+    mActivity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
+  }
+
   public void setShowNativeButtons(Boolean showNativeButtons) {
     this.showNativeButtons = showNativeButtons;
     if (showNativeButtons) {
